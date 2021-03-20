@@ -233,7 +233,8 @@ class _SignUpPageState extends State<SignUpPage> {
     return InkWell(
       onTap: () async {
         if (_firstNameController.text.isNotEmpty &&
-            _lastNameController.text.isNotEmpty) {
+            _lastNameController.text.isNotEmpty&&
+            _passwordController.text.isNotEmpty) {
           final fname = _firstNameController.text;
           final lname = _lastNameController.text;
           final gender =
