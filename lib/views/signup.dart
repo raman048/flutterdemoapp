@@ -197,8 +197,8 @@ class _SignUpPageState extends State<SignUpPage> {
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: date ?? now,
-        firstDate: now,
-        lastDate: DateTime(2101));
+        firstDate: DateTime(1900),
+        lastDate: now);
     if (picked != null && picked != date) {
       print('hello $picked');
       setState(() {
