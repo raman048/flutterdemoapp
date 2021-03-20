@@ -232,8 +232,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget _submitButton() {
     return InkWell(
       onTap: () async {
-        if (_firstNameController.text.isNotEmpty &&
-            _lastNameController.text.isNotEmpty&&
+        if (_emailIdController.text.isNotEmpty&&
             _passwordController.text.isNotEmpty) {
           final fname = _firstNameController.text;
           final lname = _lastNameController.text;
@@ -273,7 +272,7 @@ class _SignUpPageState extends State<SignUpPage> {
           }
 
         }else{
-          showToast("Please enter detail.");
+          showToast("Email id and password is required..");
         }
       },
       child: Container(
