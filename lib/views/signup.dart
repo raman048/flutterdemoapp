@@ -10,7 +10,6 @@ import 'package:flutter_app/views/login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_app/views/camera.dart';
-import 'dart:io' as Io;
 import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -192,8 +191,6 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
-
-
 
   Future<void> _selectDate(BuildContext context) async {
     final now = DateTime.now();

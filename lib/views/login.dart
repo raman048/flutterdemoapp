@@ -22,13 +22,18 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController = TextEditingController();
   DataBaseHelper dbHelper;
 
-
   @override
   void initState() {
     super.initState();
     dbHelper = DataBaseHelper();
   }
 
+  @override
+  void dispose() {
+    _emailIdController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   Widget _submitButton() {
     return InkWell(
@@ -38,20 +43,18 @@ class _LoginPageState extends State<LoginPage> {
           final emailId = _emailIdController.text;
           final password = _passwordController.text;
           Users user = await dbHelper.getLogin(emailId, password);
-          print('--fff--'+user.id.toString());
-          if(user!= null){
+          print('--fff--' + user.id.toString());
+          if (user != null) {
 
-            //showToast("success"+user.toString());
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => UserProfile(),settings: RouteSettings(
-                arguments: user
-              ),),
-            );
-          }else{
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => UserProfile(),
+                    settings: RouteSettings(arguments: user)),
+                (r) => false);
+          } else {
             showToast("Email id and password is incorrect");
           }
-
         } else {
           showToast("Please Enter Detail.");
         }
@@ -89,7 +92,6 @@ class _LoginPageState extends State<LoginPage> {
         textColor: Color(0xfff7892b),
         fontSize: 16.0);
   }
-
 
   Widget _createAccountLabel() {
     return InkWell(
@@ -216,7 +218,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-
         ],
       ),
     ));
